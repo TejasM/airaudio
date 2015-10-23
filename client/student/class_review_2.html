@@ -1,0 +1,40 @@
+<template name="class_review_2">
+    <h4>{{class.title}}</h4>
+
+    <div id="wave" style="width: 600px"></div>
+    <script>
+        $(function () {
+            var wavesurfer = Object.create(WaveSurfer);
+
+            wavesurfer.init({
+                container: '#wave',
+                waveColor: 'violet',
+                progressColor: 'purple',
+                height: 100,
+                backend: 'AudioElement'
+            });
+
+            wavesurfer.on('ready', function () {
+                wavesurfer.play();
+            });
+
+
+            wavesurfer.load('{{class.audio_path}}');
+            wavesurfer.addRegion({
+                "start": 6,
+                "end": 100,
+                "data": {},
+                "attributes": {"label": "abc", "highlight": true}
+            });
+
+        });
+    </script>
+</template>
+
+<template name="marker_tag">
+    <!--wavesurfer.addRegion({start: {{divide (diffDuration (tagBegin create_time) ../class.start_time) 1000}},-->
+    <!--end: {{divide (diffDuration (tagEnd create_time) ../class.start_time) 1000}},-->
+    <!--color: "rgba(0, 0, 0, 1)"-->
+    <!--});-->
+
+</template>

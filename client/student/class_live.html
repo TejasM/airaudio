@@ -1,0 +1,34 @@
+<template name="class_live">
+    <h4>{{class.title}}</h4>
+
+    <p class="text-center">Recording... {{getHumanDate (diffDuration timeNow class.start_time)}}
+    </p>
+
+    <div>
+        <form id="tag-form" style="display: none">
+            <div class="form-group">
+                <label for="tag">Tag</label>
+                <input id="tag" type="text" placeholder="Important">
+            </div>
+            <div class="form-group text-center">
+                <button class="button-main" id="cancel-tag" type="button">CANCEL</button>
+                <button class="button-main" id="create-tag" type="button">CREATE</button>
+            </div>
+        </form>
+        <div class="circle" id="tagNow">
+            <p class="text-center" style="font-size: 2rem; line-height: 1.5;"><br>Click <br>To Tag</p>
+        </div>
+
+        <h4 class="text-center">Tags</h4>
+        <ul class="list-group">
+            {{#each tagList}}
+                {{> tag}}
+            {{/each}}
+        </ul>
+    </div>
+</template>
+
+<template name="tag">
+    <li class="list-group-item">{{text}}
+        - {{getHumanDate (diffDuration create_time ../class.start_time)}}</li>
+</template>

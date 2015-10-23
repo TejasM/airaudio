@@ -1,0 +1,13 @@
+<template name="course-details">
+    <h4><a href="{{ pathFor route='course.show' _id=course._id}}">{{course.title}}</a> - Classes</h4>
+    <ul class="list-group">
+        {{#each classList}}
+            {{> class}}
+        {{/each}}
+    </ul>
+</template>
+
+<template name="class">
+    <li class="list-group-item"><a href="{{ pathFor route='class.show' _class_id=_id}}" class="{{#if live}}red{{/if}}">{{title}}
+        - {{prettifyDate start_time}} {{#if live}}Live{{/if}}</a></li>
+</template>

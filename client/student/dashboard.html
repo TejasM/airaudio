@@ -1,0 +1,41 @@
+<template name="dashboard">
+    <div class="main">
+        <div class="wrapper">
+            <div class="well well-main">
+                {{#if currentUser}}
+                    <a style="float: right; margin-top: 20px; margin-right: 20px; z-index: 1000; cursor: pointer"
+                       class="logout"><i class="glyphicon glyphicon-log-out"></i></a>
+                {{/if}}
+                <div class="header" style="padding: 5px 30px">
+                    <h1><img src="/images/logo.png" style="max-width: 50px">ir Audio</h1>
+                </div>
+
+                <div class="content">
+                    {{> yield}}
+                </div>
+                {{#unless currentUser}}
+                    <div class="bottom text-center">
+                        <a href="mailto:info@sharpscholar.com">Forgot your password? Email Us.</a>
+                    </div>
+                {{/unless}}
+
+            </div>
+        </div>
+    </div>
+</template>
+
+<template name="courses">
+    <h4>Your Courses</h4>
+    <ul class="list-group">
+        {{#each courseList}}
+            {{> course}}
+        {{/each}}
+    </ul>
+    <button class="button-main" style="float: right; margin-bottom: 20px; margin-right: 20px" id="show-enrollments">
+        <a href="{{pathFor 'enrollment.show'}}">ENROLL</a>
+    </button>
+</template>
+
+<template name="course">
+    <li class="list-group-item"><a href="{{ pathFor 'course.show'}}">{{title}}</a></li>
+</template>
